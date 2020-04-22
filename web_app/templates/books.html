@@ -1,24 +1,18 @@
-<!-- web_app/templates/books.html -->
-
-{% extends "layout.html" %}
-
-{% block title %}
-    <title>Books Page</title>
-{% endblock %}
+{% extends "bootstrap_layout.html" %}
+{% set active_page = "books" %}
 
 {% block content %}
 
-    <h2>Welcome to the Books Page</h2>
+    <h1>My Books Page</h1>
 
     <p>{{ message }}</p>
 
     {% if books %}
         <ul>
         {% for book in books %}
-            <li>{{ book["title"] }}</li>
+            <li>{{ book.title }}</li>
         {% endfor %}
         </ul>
-
     {% else %}
         <p>Books not found.</p>
     {% endif %}

@@ -5,10 +5,10 @@ from pprint import pprint
 
 load_dotenv()
 
-TWITTER_API_KEY = os.getenv("TWITTER_KEY")
-TWITTER_API_SECRET = os.getenv("TWITTER_SECRET")
-TWITTER_ACCESS_TOKEN = os.getenv("TWITTER_TOKEN")
-TWITTER_ACCESS_TOKEN_SECRET = os.getenv("TWITTER_TOKEN_SECRET")
+TWITTER_API_KEY = os.getenv("TWITTER_API_KEY")
+TWITTER_API_SECRET = os.getenv("TWITTER_API_SECRET")
+TWITTER_ACCESS_TOKEN = os.getenv("TWITTER_ACCESS_TOKEN")
+TWITTER_ACCESS_TOKEN_SECRET = os.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 
 def api_client():
     auth = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_SECRET)
@@ -24,23 +24,14 @@ def api_client():
 if __name__ == "__main__":
 
     api = api_client()
-    user = api.get_user("elonmusk")
-    user2 = api.get_user("Austen")
+    #user = api.get_user("elonmusk")
+    user = api.get_user(44196397)
     print("USER", user) #> <class 'tweepy.models.User'>
-    print("USER 2", user2)
-
     print(user.screen_name)
     print(user.name)
     print(user.followers_count)
-
-    print(user2.screen_name)
-    print(user2.name)
-    print(user2.followers_count)
     #pprint(user._json)
 
     exit()
     statuses = api.user_timeline("elonmusk")
-    pprint(statuses[0:3]._json)
-
-    statuses = api.user_timeline("Austen")
-    pprint(statuses[0:3]._json)
+    pprint(statuses[0]._json)
